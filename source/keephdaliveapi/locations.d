@@ -3,6 +3,16 @@ import std.algorithm.searching : canFind;
 
 struct Locations
 {
+	void loadFile(const string fileName)
+	{
+
+	}
+
+	void loadString(const string data)
+	{
+
+	}
+
 	void insert(const string location)
 	{
 		locations_ ~= location;
