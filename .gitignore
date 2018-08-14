@@ -12,3 +12,4 @@ keephdaliveapi-test-*
 *.o
 *.obj
 *.lst
+*.a
