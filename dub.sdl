@@ -3,6 +3,9 @@ description "An API for interfacing with the keephdalive daemon."
 authors "Paul Crane"
 copyright "Copyright © 2018, Paul Crane"
 license "proprietary"
+
+dependency "dshould" version="~>0.1.17"
+
 dependency "ctoptions" version="*"
 dependency "dapplicationbase" version="*"
 dependency "dfileutils" version="*"

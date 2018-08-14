@@ -1,16 +1,20 @@
 module keephdaliveapi.locations;
-import std.algorithm.searching : canFind;
+
+import std.algorithm;
+import std.file : readText;
+import std.string : splitLines;
 
 struct Locations
 {
 	void loadFile(const string fileName)
 	{
-
+		loadString(fileName.readText());
 	}
 
 	void loadString(const string data)
 	{
-
+		data.splitLines
+			.each!(line => insert(line));
 	}
 
 	void insert(const string location)
@@ -91,7 +95,7 @@ private:
 
 unittest
 {
-	import fluent.asserts;
+	import dshould;
 
 	Locations locations;
 	locations.insert("Paul");
