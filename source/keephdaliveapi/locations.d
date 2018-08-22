@@ -2,6 +2,7 @@ module keephdaliveapi.locations;
 
 import std.algorithm;
 import std.file : readText;
+import std.stdio;
 import std.string : splitLines;
 
 struct Locations
@@ -15,6 +16,12 @@ struct Locations
 	{
 		data.splitLines
 			.each!(line => insert(line));
+	}
+
+	void saveFile(const string fileName)
+	{
+		auto file = File(fileName, "w+");
+		locations_.each!(location => file.writeln(location));
 	}
 
 	void insert(const string location)
