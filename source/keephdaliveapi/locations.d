@@ -9,6 +9,7 @@ struct Locations
 {
 	void loadFile(const string fileName)
 	{
+		locationsFileName_ = fileName;
 		loadString(fileName.readText());
 	}
 
@@ -16,6 +17,11 @@ struct Locations
 	{
 		data.splitLines
 			.each!(line => insert(line));
+	}
+
+	void saveFile()
+	{
+		saveFile(locationsFileName_);
 	}
 
 	void saveFile(const string fileName)
@@ -98,6 +104,7 @@ struct Locations
 
 private:
 	string[] locations_;
+	string locationsFileName_;
 }
 
 unittest
