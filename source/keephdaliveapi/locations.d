@@ -7,97 +7,97 @@ import std.string : splitLines;
 
 struct Locations
 {
-	void loadFile(const string fileName)
+	void loadFile(const string fileName) @safe
 	{
 		locationsFileName_ = fileName;
 		loadString(fileName.readText());
 	}
 
-	void loadString(const string data)
+	void loadString(const string data) pure @safe
 	{
 		data.splitLines
 			.each!(line => insert(line));
 	}
 
-	void saveFile()
+	void saveFile() @safe
 	{
 		saveFile(locationsFileName_);
 	}
 
-	void saveFile(const string fileName)
+	void saveFile(const string fileName) @safe
 	{
 		auto file = File(fileName, "w+");
 		locations_.each!(location => file.writeln(location));
 	}
 
-	void insert(const string location)
+	void insert(const string location) nothrow pure @safe
 	{
 		locations_ ~= location;
 	}
 
-	void remove(const string location)
+	void remove(const string location) nothrow pure @safe
 	{
 		import darrayutils : remove;
 		locations_.remove(location);
 	}
 
-	void removeAll(const string location)
+	void removeAll(const string location) nothrow pure @safe
 	{
 		import darrayutils : removeAll;
 		locations_.removeAll(location);
 	}
 
-	void clear()
+	void clear() nothrow pure @safe
 	{
 		locations_ = [];
 	}
 
-	size_t length()
+	size_t length() nothrow pure @safe
 	{
 		return locations_.length;
 	}
 
-	bool exists(const string path) const
+	bool exists(const string path) nothrow const pure @safe
 	{
 		return locations_.canFind(path);
 	}
 
-	@property bool empty() const
+	@property bool empty() const nothrow pure @safe
 	{
 		return locations_.length == 0;
 	}
 
-	@property ref string front()
+	@property ref string front() nothrow pure @safe
 	{
 		return locations_[0];
 	}
 
-	void popFront()
+	void popFront() nothrow pure @safe
 	{
 		locations_ = locations_[1 .. $];
 	}
 
-	@property ref string back()
+	@property ref string back() nothrow pure @safe
 	{
 		return locations_[$ - 1];
 	}
 
-	void popBack()
+	void popBack() nothrow pure @safe
 	{
 		locations_ = locations_[0 .. $ - 1];
 	}
 
-	string opIndex(size_t index)
+	string opIndex(size_t index) nothrow pure @safe
 	{
 		return locations_[index];
 	}
 
-	@property Locations save()
+	@property Locations save() nothrow pure @safe
 	{
 		return this;
 	}
 
-	string[] getLocations()
+	string[] getLocations() nothrow pure @safe
 	{
 		return locations_;
 	}
