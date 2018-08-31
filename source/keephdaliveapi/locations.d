@@ -5,9 +5,11 @@ import std.file : readText;
 import std.stdio;
 import std.string : splitLines;
 
+import keephdaliveapi.constants;
+
 struct Locations
 {
-	void loadFile(const string fileName) @safe
+	void loadFile(const string fileName = WRITE_TO_LOCATIONS_FILENAME) @safe
 	{
 		locationsFileName_ = fileName;
 		loadString(fileName.readText());
