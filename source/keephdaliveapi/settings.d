@@ -1,0 +1,6 @@
+module settings;
+
+class KeepAliveSettings
+{
+
+}
