@@ -16,7 +16,7 @@ class KeepAliveSettings
 	// TODO: Mabye use a lock file?
 	this()
 	{
-		path_ = ConfigPath(COMPANY_NAME, PROGRAM_NAME);
+		path_.create(COMPANY_NAME, PROGRAM_NAME);
 	}
 
 private:
