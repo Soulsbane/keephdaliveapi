@@ -19,6 +19,21 @@ class KeepAliveSettings
 		path_.create(COMPANY_NAME, PROGRAM_NAME);
 	}
 
+	void setDelay(size_t delay)
+	{
+		settings_.setDelay(delay);
+	}
+
+	void setFilename(const string fileName)
+	{
+		settings_.setFilename(fileName);
+	}
+
+	void setPath(const string path)
+	{
+		settings_.setPath(path);
+	}
+
 private:
 	StructOptions!Options settings_;
 	ConfigPath path_;
